@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <footer id="contact">
+    <p>&copy; 2026 GooseSupreme. All rights reserved. · <a href="mailto:contact@goosesupreme.example">contact@goosesupreme.example</a></p>
+  </footer>
   <title>GooseSupreme - Strategic IT Consulting</title>
   <style>
     :root{
@@ -16,6 +19,34 @@
     }
 
     html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(135deg,var(--bg-start),var(--bg-end));color:#fff}
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+    navToggle.addEventListener('click', ()=>{
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      mainNav.style.display = expanded ? '' : 'flex';
+    });
+
+    // Float contact button behaviour
+    document.getElementById('floatContact').addEventListener('click', ()=>{
+      location.hash = '#contact';
+    });
+
+    // Reveal on scroll for features and testimonials
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, {threshold: 0.12});
+    document.querySelectorAll('.feature').forEach(el=>{ el.classList.add('fade-up'); observer.observe(el); });
+
+    // Add accessible focus outlines for keyboard users
+    document.body.addEventListener('keydown', (e)=>{
+      if(e.key === 'Tab') document.documentElement.classList.add('show-focus');
+    }, {once:true});
+  </script>
 
     header{
       padding:56px 20px;text-align:center;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
@@ -35,6 +66,9 @@
       flex:1 1 300px;background:linear-gradient(180deg,var(--card),rgba(255,255,255,0.01));border-radius:12px;padding:22px;box-shadow:0 10px 30px rgba(2,6,23,0.6);
       transition:transform .2s, box-shadow .2s, border-color .2s;border:1px solid rgba(255,255,255,0.02)
     }
+    .fade-up{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+    .fade-up.visible{opacity:1;transform:translateY(0)}
+    .show-focus :focus{outline:3px solid rgba(124,58,237,0.25);outline-offset:4px}
 
     .feature h3{color:var(--accent);margin-top:0}
     .feature p{color:var(--muted)}
@@ -50,16 +84,28 @@
 </head>
 <body>
   <header>
+  <header>
+    <div class="nav-wrap">
+      <div class="brand">GooseSupreme</div>
+      <button id="navToggle" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+      <nav id="mainNav" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#why">Why Us</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#contact">Contact Us</a>
+      </nav>
+    </div>
     <h1>GooseSupreme</h1>
     <div class="subtitle">Strategic IT Consulting • Cloud Engineering • Security</div>
   </header>
 
   <section class="hero">
     <p>We design and operate secure, resilient IT platforms that enable organisations to move faster with confidence. Our team blends pragmatic engineering, strong security practices, and clear communication to deliver measurable business outcomes.</p>
+    <p style="margin-top:18px"><a class="cta" href="#contact">Start a Conversation</a> <a style="margin-left:12px;color:var(--muted)" href="README.md">Learn more</a></p>
   </section>
 
   <main>
-    <div class="features">
+    <div id="services" class="features">
       <div class="feature">
         <h3>Consulting & Strategy</h3>
         <p>Architecture reviews, technology roadmaps, cloud migration strategy, and advisory services aligned to your objectives.</p>
@@ -79,15 +125,25 @@
       </div>
     </div>
 
-    <section style="margin-top:28px;background:transparent;padding:18px;border-radius:10px;color:var(--muted)">
+    <section id="why" style="margin-top:28px;background:transparent;padding:18px;border-radius:10px;color:var(--muted)">
       <h3 style="color:var(--accent)">Why work with us?</h3>
       <p>We prioritise secure, maintainable systems that reduce operational burden and accelerate your product roadmap. Practical recommendations, measurable results.</p>
-      <p style="margin-top:12px"><a href="privacypolicy.html">Privacy Policy</a></p>
+      <div class="testimonials" style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap">
+        <div class="feature" style="flex:1 1 220px">
+          <strong>“Resolved our cloud cost issues in weeks.”</strong>
+          <p class="muted">— Engineering Lead, Fintech</p>
+        </div>
+        <div class="feature" style="flex:1 1 220px">
+          <strong>“Excellent security review and remediation plan.”</strong>
+          <p class="muted">— CTO, HealthTech</p>
+        </div>
+      </div>
+      <p style="margin-top:12px"><a href="privacypolicy.html">Privacy Policy</a> · <a href="https://github.com/AbdelAjhir/GooseSupreme">GitHub</a> · <a href="README.md">README</a></p>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2026 GooseSupreme. All rights reserved.</p>
+  <footer id="contact">
+    <p>&copy; 2026 GooseSupreme. All rights reserved. · <a href="mailto:contact@goosesupreme.example">contact@goosesupreme.example</a></p>
   </footer>
 </body>
 </html>
