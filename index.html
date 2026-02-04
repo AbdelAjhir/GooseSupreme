@@ -1,11 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <footer id="contact">
-    <p>&copy; 2026 GooseSupreme. All rights reserved. · <a href="mailto:contact@goosesupreme.example">contact@goosesupreme.example</a></p>
-  </footer>
   <title>GooseSupreme - Strategic IT Consulting</title>
   <style>
     :root{
@@ -19,71 +16,41 @@
     }
 
     html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(135deg,var(--bg-start),var(--bg-end));color:#fff}
-  <script>
-    // Mobile nav toggle
-    const navToggle = document.getElementById('navToggle');
-    const mainNav = document.getElementById('mainNav');
-    navToggle.addEventListener('click', ()=>{
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!expanded));
-      mainNav.style.display = expanded ? '' : 'flex';
-    });
 
-    // Float contact button behaviour
-    document.getElementById('floatContact').addEventListener('click', ()=>{
-      location.hash = '#contact';
-    });
+    /* Header & nav */
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1100px;margin:0 auto;padding:16px}
+    .brand{font-weight:700;color:var(--accent);font-size:1.1rem}
+    #mainNav{display:flex;gap:12px;align-items:center}
+    #mainNav a{color:var(--muted);text-decoration:none;padding:8px}
+    #mainNav a.cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021;padding:8px 12px;border-radius:8px;font-weight:700}
+    #navToggle{display:none;background:transparent;border:0;color:var(--muted);font-size:20px}
 
-    // Reveal on scroll for features and testimonials
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting) e.target.classList.add('visible');
-      });
-    }, {threshold: 0.12});
-    document.querySelectorAll('.feature').forEach(el=>{ el.classList.add('fade-up'); observer.observe(el); });
+    header{padding:24px 0;text-align:center;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);box-shadow:0 6px 24px rgba(0,0,0,0.6)}
+    header h1{font-size:2.2rem;margin:6px 0 0;color:var(--accent)}
+    header .subtitle{margin-top:6px;font-size:0.98rem;color:var(--muted)}
 
-    // Add accessible focus outlines for keyboard users
-    document.body.addEventListener('keydown', (e)=>{
-      if(e.key === 'Tab') document.documentElement.classList.add('show-focus');
-    }, {once:true});
-  </script>
-
-    header{
-      padding:56px 20px;text-align:center;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
-      box-shadow:0 8px 40px rgba(0,0,0,0.6);backdrop-filter:blur(4px);
-    }
-
-    header h1{font-size:2.4rem;margin:0;color:var(--accent);letter-spacing:0.6px}
-    header .subtitle{margin-top:8px;font-size:1rem;color:var(--muted)}
-
-    .hero{padding:72px 20px;text-align:center;background-image:radial-gradient(circle at 10% 20%, rgba(124,58,237,0.06), transparent 20%), radial-gradient(circle at 90% 80%, rgba(102,240,255,0.04), transparent 18%)}
-    .hero p{max-width:880px;margin:0 auto;font-size:1.02rem;color:var(--muted);line-height:1.65}
+    .hero{padding:56px 20px 40px;text-align:center;background-image:radial-gradient(circle at 10% 20%, rgba(124,58,237,0.06), transparent 20%), radial-gradient(circle at 90% 80%, rgba(102,240,255,0.04), transparent 18%)}
+    .hero p{max-width:880px;margin:0 auto;font-size:1.02rem;color:var(--muted);line-height:1.6}
 
     main{max-width:1100px;margin:28px auto;padding:0 20px}
     .features{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between;margin-top:26px}
-
-    .feature{
-      flex:1 1 300px;background:linear-gradient(180deg,var(--card),rgba(255,255,255,0.01));border-radius:12px;padding:22px;box-shadow:0 10px 30px rgba(2,6,23,0.6);
-      transition:transform .2s, box-shadow .2s, border-color .2s;border:1px solid rgba(255,255,255,0.02)
-    }
-    .fade-up{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
-    .fade-up.visible{opacity:1;transform:translateY(0)}
-    .show-focus :focus{outline:3px solid rgba(124,58,237,0.25);outline-offset:4px}
-
+    .feature{flex:1 1 300px;background:linear-gradient(180deg,var(--card),rgba(255,255,255,0.01));border-radius:12px;padding:22px;box-shadow:0 10px 30px rgba(2,6,23,0.6);transition:transform .2s,box-shadow .2s;border:1px solid rgba(255,255,255,0.02)}
     .feature h3{color:var(--accent);margin-top:0}
     .feature p{color:var(--muted)}
     .feature:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,23,0.7);border-color:rgba(124,58,237,0.18)}
 
-    .cta{display:inline-block;margin-top:18px;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021; text-decoration:none;font-weight:700}
+    .fade-up{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+    .fade-up.visible{opacity:1;transform:translateY(0)}
+    .show-focus :focus{outline:3px solid rgba(124,58,237,0.25);outline-offset:4px}
 
+    .cta{display:inline-block;margin-top:14px;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021;text-decoration:none;font-weight:700}
     footer{text-align:center;padding:22px;color:var(--muted);margin-top:40px}
-    a{color:var(--accent)}
 
+    @media(max-width:900px){#mainNav a:not(.cta){display:none}#navToggle{display:block}}
     @media(max-width:720px){header h1{font-size:1.8rem}.features{flex-direction:column}}
   </style>
 </head>
 <body>
-  <header>
   <header>
     <div class="nav-wrap">
       <div class="brand">GooseSupreme</div>
@@ -145,5 +112,43 @@
   <footer id="contact">
     <p>&copy; 2026 GooseSupreme. All rights reserved. · <a href="mailto:contact@goosesupreme.example">contact@goosesupreme.example</a></p>
   </footer>
+
+  <button id="floatContact" aria-label="Contact us" style="position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;padding:12px 14px;border-radius:12px;color:#001;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,0.4);cursor:pointer">Contact</button>
+
+  <script>
+    // Run after DOM is ready
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const navToggle = document.getElementById('navToggle');
+      const mainNav = document.getElementById('mainNav');
+      if(navToggle && mainNav){
+        navToggle.addEventListener('click', ()=>{
+          const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', String(!expanded));
+          // Toggle visibility for small screens
+          if(window.innerWidth <= 900){
+            mainNav.style.display = expanded ? 'none' : 'flex';
+            mainNav.style.flexDirection = 'column';
+            mainNav.style.gap = '8px';
+            mainNav.style.padding = '8px';
+            mainNav.style.background = 'transparent';
+          }
+        });
+      }
+
+      const floatBtn = document.getElementById('floatContact');
+      if(floatBtn){
+        floatBtn.addEventListener('click', ()=>{ location.hash = '#contact'; });
+      }
+
+      // Reveal on scroll for features
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+      }, {threshold: 0.12});
+      document.querySelectorAll('.feature').forEach(el=>{ el.classList.add('fade-up'); observer.observe(el); });
+
+      // Keyboard focus styling activation
+      document.body.addEventListener('keydown', (e)=>{ if(e.key === 'Tab') document.documentElement.classList.add('show-focus'); }, {once:true});
+    });
+  </script>
 </body>
 </html>
